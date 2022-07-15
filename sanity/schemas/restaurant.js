@@ -48,7 +48,7 @@ export default {
     },
     {
       name: "type",
-      type: "Category",
+      title: "Category",
       validation: (Rule) => Rule.required(),
       type: "reference",
       to: [{ type: "category" }],
