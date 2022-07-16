@@ -45,7 +45,7 @@ const HomeScreen = () => {
       .then((data) => {
         setFeaturedCategories(data);
       });
-  });
+  }, []);
 
   // console.log(featuredCategories);
   return (
@@ -81,19 +81,24 @@ const HomeScreen = () => {
         <AdjustmentsIcon color="#00CCBB" />
       </View>
       {/* body */}
-      <ScrollView>
+      <ScrollView
+        className="bg-gray-100"
+        contentContainerStyle={{
+          paddingBottom: 100,
+        }}
+      >
         {/* Categories */}
         <Categories />
         {/* Featured Row */}
 
-        {featuredCategories?.map((category) => {
+        {featuredCategories?.map((category) => (
           <FeaturedRow
             key={category._id}
             title={category.title}
-            description={category.description}
+            description={category.short_description}
             id={category._id}
-          />;
-        })}
+          />
+        ))}
 
         {/* <FeaturedRow
           title="Featured"

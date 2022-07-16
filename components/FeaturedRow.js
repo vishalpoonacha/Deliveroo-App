@@ -16,7 +16,7 @@ const FeaturedRow = ({ id, title, description }) => {
         restaurants[]->{
           ...,
           dishes[]->,
-          types->{
+          type->{
             name
           }
         },
@@ -29,7 +29,7 @@ const FeaturedRow = ({ id, title, description }) => {
       });
   }, [id]);
 
-  console.log(restaurants);
+  // console.log(restaurants);
 
   return (
     <View>
@@ -47,21 +47,21 @@ const FeaturedRow = ({ id, title, description }) => {
         className="pt-4"
       >
         {/* Restaurant Cards */}
-        {restaurants?.map((restaurant) => {
+        {restaurants?.map((restaurant) => (
           <RestaurantCards
             key={restaurant._id}
             id={restaurant._id}
-            imgUrl={restaurant.imgUrl}
-            title={restaurant.title}
+            imgUrl={restaurant.image}
+            title={restaurant.name}
             rating={restaurant.rating}
-            genre={restaurant.genre}
+            genre={restaurant.type?.name}
             address={restaurant.address}
             short_description={restaurant.short_description}
             dishes={restaurant.dishes}
             long={restaurant.long}
             lat={restaurant.lat}
-          />;
-        })}
+          />
+        ))}
       </ScrollView>
     </View>
   );
